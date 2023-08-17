@@ -1,28 +1,83 @@
 body {
   padding: 0;
   font-family: sans-serif;
-  position:absolute;
+  color: white;
+  position: absolute;
   height: 100%;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+
+  background-color: #0E0E18;
+
 }
 
-.app{
+.app {
   height: 100%;
 }
 
-.login-form{
-  
+.login-form {
+
   display: flex;
   flex-direction: column;
   align-items: center;
   vertical-align: middle;
 }
 
-form{
+form {
   display: flex;
   flex-direction: column;
+
+}
+
+.listButtons {
+  margin-Left: 10;
+  width: 20%;
+}
+
+.task {
+  margin: auto;
+  display: flex;
+  flex-direction: space-between;
+  border: 1px solid lightgray;
+  margin-bottom: 10px;
+  align-items: center;
+}
+
+.taskMain {
+  text-align: center;
+  margin-Top: 100;
+}
+
+.addButton{
+  height: 55;
+  margin-Bottom: 30;
+  background-color: blue;
+}
+
+.editButton {
   
+  margin-left: 10;
+  margin-bottom: 30;
+  margin-top: 30;
+  width: 20%;
+}
+
+.Edit{
+  display: flex;
+  background-color: rgb(255, 255, 255);
+  align-items: center;
+  background-color: #0E0E18;
+
+}
+
+/* .textField > label{
+  color:white !important;
+} */
+.textField > label{
+  color:white !important;
+}
+.textField{
+  color:white !important;
 }

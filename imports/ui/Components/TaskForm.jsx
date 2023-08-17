@@ -1,0 +1,42 @@
+import React, { useState } from 'react';
+import { TasksCollection } from '/imports/api/TasksCollection';
+import { TextField, Button } from "@material-ui/core";
+
+
+export const TaskForm = () => {
+  const [text, setText] = useState("");
+
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    if (!text) return;
+
+    TasksCollection.insert({
+      text: text.trim(),
+      createdAt: new Date()
+    });
+
+    setText("");
+  };
+
+  return (
+    <div>
+      <TextField
+        variant="outlined"
+        onChange={(e) => setText(e.target.value)}
+        label="type your task"
+        value={text}
+      />
+      <Button
+        size="large"
+        //variant={isEdited ? "outlined" : "contained"}
+        color="primary"
+        onClick={handleSubmit}
+        //disabled={text ? false : true}
+      >
+        Enviar 
+      </Button>
+    </div>
+    
+  );
+};

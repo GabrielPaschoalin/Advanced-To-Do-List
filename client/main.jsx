@@ -4,7 +4,9 @@ import './main.css'
 
 import Login from '../imports/ui/Login';
 import Cadastro from '../imports/ui/Cadastro';
-import Tasks from '../imports/ui/Tasks';
+import TaskPage from '../imports/ui/TaskPage';
+import Welcome from '../imports/ui/Welcome';
+import EditTask from '../imports/ui/EditTask';
 
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
@@ -13,7 +15,7 @@ import { App } from '../imports/ui/App';
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App /> ,
+    element: <App />,
     children: [
       {
         path: "/login",
@@ -25,11 +27,18 @@ const router = createBrowserRouter([
       },
       {
         path: "/tasks",
-        element: <Tasks />
+        element: <TaskPage />
       },
+      {
+        path: "/welcome",
+        element: <Welcome />
+      },
+      {
+        path: "/editTask/:id",
+        element: <EditTask />
+      }
     ]
   }
-  
 ]);
 
 Meteor.startup(() => {
