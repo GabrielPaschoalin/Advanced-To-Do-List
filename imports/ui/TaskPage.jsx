@@ -5,22 +5,13 @@ import { TasksCollection } from '/imports/api/TasksCollection';
 import Task from './Components/Task';
 import { TaskForm } from './Components/TaskForm';
 
-const deleteTask = ({ _id }) => TasksCollection.remove(_id);
+const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
-const toggleChecked = ({ _id, isChecked }) => {
-    TasksCollection.update(_id, {
-        $set: {
-            isChecked: !isChecked
-        }
-    })
-};
+const toggleChecked = ({ _id, isChecked }) =>
+    Meteor.call('tasks.setIsChecked', _id, !isChecked);
 
 const editClick = ({ _id, needEdit }) => {
-    TasksCollection.update(_id, {
-        $set: {
-            needEdit: !needEdit
-        }
-    })
+    Meteor.call('tasks.editClick', _id, !needEdit);
 }
 
 const TaskPage = () => {
@@ -28,12 +19,13 @@ const TaskPage = () => {
     const tasks = useTracker(() =>
         TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
     );
-    
+
     return (
         <div className='taskMain'>
             <TaskForm />
             <ul>
-                {tasks.map(task => (                    
+
+                {tasks.map(task => (
                     <Task
                         key={task._id}
                         task={task}

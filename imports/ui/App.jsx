@@ -1,12 +1,12 @@
 import React, { Fragment } from 'react';
-import TaskPage from './TaskPage';
 import Login from './Login';
 import "../../client/main.css";
 import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
-import { useNavigate, Outlet } from 'react-router-dom';
+import { useNavigate, Outlet, Link } from 'react-router-dom';
+import DrawerComponent from './Components/Drawer';
 
-export const App = () => {
+const App = () => {
 
   const user = useTracker(() => Meteor.user());
   const navigate = useNavigate();
@@ -21,18 +21,25 @@ export const App = () => {
     });
 
   };
-
+  console.log("teste-app")
   return (
 
     <div className='app'>
-      {user ? (
-        <Fragment>
-          <button className="logout" onClick={submit}>Logout</button>
+      {user && ( //Renderiza se a condição for verdadeira
+        <>
+          <div className='Header'>
+            <DrawerComponent />
+            <button className="logout" onClick={submit}>Logout</button>
+          </div>
           <Outlet />
-        </Fragment>
-      ) : (
+        </>
+      )}
+      {!user && (
         <Login />
       )}
     </div>
+
   );
 };
+
+export default App;

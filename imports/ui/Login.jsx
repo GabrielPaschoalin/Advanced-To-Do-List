@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Meteor } from 'meteor/meteor';
 import { Link, useNavigate } from 'react-router-dom';
+import { Button } from '@mui/base';
 
 const Login = () => {
 
@@ -31,7 +32,7 @@ const Login = () => {
         <h1>Bem vindo ao To Do List!</h1>
         <input type="text" placeholder="Username" name="loginUsername" required onChange={e => setUsername(e.target.value)} />
         <input type="text" placeholder="Password" name="loginPassword" required onChange={e => setPassword(e.target.value)} />
-        <button type="submit">Entrar</button>
+        <button type="submit">Login</button>
       </form>
       <Link to="/cadastro">CADASTRE-SE</Link>
     </div>

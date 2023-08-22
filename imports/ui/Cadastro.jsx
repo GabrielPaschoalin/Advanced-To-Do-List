@@ -28,16 +28,16 @@ const Cadastro = () => {
     })
 
   }
+  console.log('cadastro');
 
   return (
     <div className='login-form'>
       <form onSubmit={submit}>
-        <h1>Bem vindo ao To Do List!</h1>
+        <h1>Bem vindo ao To Do List! Realize seu cadastro</h1>
         <input type="text" placeholder="Username" name="registerUsername" required onChange={e => setUsername(e.target.value)}/>
         <input type="text" placeholder="Password" name="registerPassword" required onChange={e => setPassword(e.target.value)}/>
-        <button type="submit">Cadastrar</button>
+        <button type="submit">CADASTRAR</button>
       </form>
-      
     </div>
   );
 };

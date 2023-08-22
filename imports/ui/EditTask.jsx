@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
 import { TasksCollection } from '/imports/api/TasksCollection';
 import { FormGroup, TextField, Button, MuiThemeProvider } from "@material-ui/core";
 import { useParams, useNavigate } from 'react-router';
+import { Meteor } from 'meteor/meteor';
 
 const EditTask = () => {
 
     const navigate = useNavigate();
-
     const { id } = useParams();
 
 
@@ -24,15 +24,19 @@ const EditTask = () => {
 
     const returnToTaskList = () => {
         const updatedTask = { ...selectedTask, text, data, description, needEdit: false };
-        TasksCollection.update(selectedTask._id, { $set: updatedTask });
+        // TasksCollection.update(selectedTask._id, { $set: updatedTask });
+        Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
         navigate('/tasks');
     }
 
     const handleCancel = () => {
         const updatedTask = { ...selectedTask, needEdit: false };
-        TasksCollection.update(selectedTask._id, { $set: updatedTask });
+        // TasksCollection.update(selectedTask._id, { $set: updatedTask });
+        Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
         navigate('/tasks');
     }
+
+
 
     return (
 
@@ -43,7 +47,7 @@ const EditTask = () => {
                     className='textField'
                     sx={{ input: { color: 'red' } }}
                     variant="filled"
-                    color="seconadry"
+                    color="secondary"
                     margin="dense"
                     onChange={(e) => setText(e.target.value)}
                     label="Nome"

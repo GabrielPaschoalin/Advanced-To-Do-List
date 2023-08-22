@@ -11,10 +11,7 @@ export const TaskForm = () => {
 
     if (!text) return;
 
-    TasksCollection.insert({
-      text: text.trim(),
-      createdAt: new Date()
-    });
+    Meteor.call('tasks.insert', text);
 
     setText("");
   };

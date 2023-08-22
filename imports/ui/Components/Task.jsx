@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Meteor } from 'meteor/meteor';
 
 import { generatePath, useNavigate } from 'react-router';
@@ -12,15 +12,25 @@ const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (task.needEdit) {
+            navigate(generatePath("/editTask/:id", { id: task._id }));
+        }
+    }, [task.needEdit, task._id, navigate]);
+
     return (
         <div>
             {!task.needEdit ? (
                 <FormGroup className='task'>
+                    <div className='task-left'>
                     <Checkbox
                         checked={!!task.isChecked}
                         onClick={() => onCheckboxClick(task)}
+
                     />
                     {task.text}
+                    </div>
                     <Button
                         onClick={() => onEditClick(task)}
                         variant="contained"
@@ -35,12 +45,8 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
                         DELETE
                     </Button>
                 </FormGroup>
-            ) : (
-                <div>
-                    {navigate(generatePath("/editTask/:id", { id: task._id }))}
-                </div>
-            )}
-        </div>
+            ) : null}
+            </div>
     );
 };
 
