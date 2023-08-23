@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { Meteor } from 'meteor/meteor';
 
 import { generatePath, useNavigate } from 'react-router';
 import FormGroup from '@mui/material/FormGroup';
-import FormControlLabel from '@mui/material/FormControlLabel';
 import { Button, Checkbox } from "@material-ui/core";
-import { pink } from '@mui/material/colors';
+import Popup from '../Components/Popup'
+import { useTracker } from 'meteor/react-meteor-data';
 
-const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
+    const user = useTracker(() => Meteor.user());
     const navigate = useNavigate();
+    const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
 
     useEffect(() => {
         if (task.needEdit) {
@@ -19,25 +19,42 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
         }
     }, [task.needEdit, task._id, navigate]);
 
+    const clickOnEdit = () => {
+        if (user._id === task.userId) {
+            onEditClick(task);
+        } else {
+            console.log("SEM PERMISSÃO");
+        }
+    };
+    const clickOnDelete = () => {
+        if (user._id === task.userId) {
+            onDeleteClick(task);
+        } else {
+            console.log("SEM PERMISSÃO");
+        }
+    };
+
+
     return (
         <div>
             {!task.needEdit ? (
                 <FormGroup className='task'>
                     <div className='task-left'>
-                    <Checkbox
-                        checked={!!task.isChecked}
-                        onClick={() => onCheckboxClick(task)}
+                        <Checkbox
+                            checked={!!task.isChecked}
+                            onClick={() => onCheckboxClick(task)}
 
-                    />
-                    {task.text}
+                        />
+                        {task.text}({task.userId})
+
                     </div>
                     <Button
-                        onClick={() => onEditClick(task)}
+                        onClick={() => clickOnEdit()}
                         variant="contained"
                         className="listButtons"
                     >EDIT</Button>
                     <Button
-                        onClick={() => onDeleteClick(task)}
+                        onClick={() => clickOnDelete()}
                         color="secondary"
                         variant="contained"
                         className="listButtons"
@@ -46,7 +63,8 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
                     </Button>
                 </FormGroup>
             ) : null}
-            </div>
+            
+        </div>
     );
 };
 

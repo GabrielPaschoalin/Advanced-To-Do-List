@@ -4,6 +4,7 @@ import { TasksCollection } from '/imports/api/TasksCollection';
 import Task from './Components/Task';
 import { TaskForm } from './Components/TaskForm';
 
+
 const deleteTask = ({ _id }) => Meteor.call('tasks.remove', _id);
 
 const toggleChecked = ({ _id, isChecked }) =>

@@ -2,6 +2,7 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { TasksCollection } from './TasksCollection';
 
+
 Meteor.methods({
 
   'tasks.insert'(text) {
@@ -17,7 +18,7 @@ Meteor.methods({
       userId: this.userId,
       needEdit: false,
       isChecked: false,
-      description: 'Type a description here'
+      description: 'Type a description here', 
     })
   },
 
@@ -27,7 +28,7 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('Not authorized.');
     }
-
+    
     TasksCollection.remove(taskId);
   },
 

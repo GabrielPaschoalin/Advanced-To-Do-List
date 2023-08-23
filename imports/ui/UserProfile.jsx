@@ -46,9 +46,9 @@ const UserProfile = () => {
             {/* USER PROFILE: {user._id} */}
             <div className='userProfile-fields'>
                 <TextField className='userField' variant="outlined" onChange={(e) => setNome(e.target.value)} label="Nome" value={nome} />
-                <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} label="Email" value={username} />
-                <TextField variant="outlined" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} />
-                <TextField variant="outlined" onChange={(e) => setEmpresa(e.target.value)} label="Empresa" value={empresa} />
+                <TextField className='userField' variant="outlined" onChange={(e) => setEmail(e.target.value)} label="Email" value={username} />
+                <TextField className='userField' variant="outlined" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} />
+                <TextField className='userField' variant="outlined" onChange={(e) => setEmpresa(e.target.value)} label="Empresa" value={empresa} />
 
             </div>
             <Button size="large" color="primary" onClick={updateUserProfile}>
