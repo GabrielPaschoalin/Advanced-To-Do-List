@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { TasksCollection } from '/imports/api/TasksCollection';
 import { TextField, Button } from "@material-ui/core";
 
 

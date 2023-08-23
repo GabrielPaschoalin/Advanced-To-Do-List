@@ -11,27 +11,42 @@ import {
     InboxOutlined,
 } from "@material-ui/icons";
 import { useState } from "react";
+import { generatePath, useNavigate } from 'react-router';
+import { ListItemButton } from '@mui/material';
 
 const data = [
     {
         name: "Tarefas",
         icon: <HomeOutlined />,
+        link: '/tasks'
     },
-    { name: "Perfil", icon: <InboxOutlined /> },
+    {
+        name: "Perfil",
+        icon: <InboxOutlined />,
+        link: '/userProfile'
+
+    },
 
 ];
 
-function DrawerComponent() {
+function DrawerComponent({ user }) {
     const [open, setOpen] = useState(false);
+
+    const navigate = useNavigate();
 
     const getList = () => (
         <div style={{ width: 250 }} onClick={() => setOpen(false)}>
-            {data.map((item, index) => (
-                <ListItem button key={index}>
-                    <ListItemIcon>{item.icon}</ListItemIcon>
-                    <ListItemText primary={item.name} />
-                </ListItem>
-            ))}
+
+            <ListItemButton key={0} onClick={() => navigate('/tasks')}>
+                <ListItemIcon><HomeOutlined /></ListItemIcon>
+                <ListItemText primary="Tarefas" />
+            </ListItemButton>
+
+            <ListItemButton key={1} onClick={() => navigate(generatePath("/userProfile/:id", { id: user._id }))}>
+                <ListItemIcon><InboxOutlined /></ListItemIcon>
+                <ListItemText primary="Perfil" />
+            </ListItemButton>
+            
         </div>
     );
     return (

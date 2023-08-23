@@ -12,6 +12,7 @@ import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import App from '../imports/ui/App';
+import UserProfile from '../imports/ui/UserProfile'
 
 const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/editTask/:id",
         element: <EditTask />
+      },
+      {
+        path: "/userProfile/:id",
+        element: <UserProfile />
       }
     ]
   },

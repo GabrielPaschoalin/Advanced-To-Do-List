@@ -21,14 +21,13 @@ const App = () => {
     });
 
   };
-  console.log("teste-app")
   return (
 
     <div className='app'>
       {user && ( //Renderiza se a condição for verdadeira
         <>
           <div className='Header'>
-            <DrawerComponent />
+            <DrawerComponent user={user}/>
             <button className="logout" onClick={submit}>Logout</button>
           </div>
           <Outlet />

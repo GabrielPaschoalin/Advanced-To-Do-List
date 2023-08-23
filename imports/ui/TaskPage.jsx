@@ -1,6 +1,5 @@
 import React from 'react';
 import { useTracker } from 'meteor/react-meteor-data';
-import { useState } from 'react';
 import { TasksCollection } from '/imports/api/TasksCollection';
 import Task from './Components/Task';
 import { TaskForm } from './Components/TaskForm';
@@ -15,7 +14,7 @@ const editClick = ({ _id, needEdit }) => {
 }
 
 const TaskPage = () => {
-
+    
     const tasks = useTracker(() =>
         TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
     );
