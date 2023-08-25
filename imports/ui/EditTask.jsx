@@ -19,19 +19,25 @@ const EditTask = () => {
 
     const [text, setText] = useState(selectedTask.text);
     const [description, setDescription] = useState(selectedTask.description);
-    const [data, setData] = useState(selectedTask.data);
+    const [data, setData] = useState(selectedTask.createdAt);
 
 
-    const returnToTaskList = () => {
-        const updatedTask = { ...selectedTask, text, data, description, needEdit: false };
-        // TasksCollection.update(selectedTask._id, { $set: updatedTask });
+    const returnToTaskList = (e) => {
+        e.preventDefault();
+
+        const updatedTask = { ...selectedTask, text, createdAt: data, description, needEdit: false };
+    
         Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
         navigate('/tasks');
     }
 
-    const handleCancel = () => {
+    const handleCancel = (e) => {
+        e.preventDefault();
+
         const updatedTask = { ...selectedTask, needEdit: false };
-        // TasksCollection.update(selectedTask._id, { $set: updatedTask });
+        
+        console.log(updatedTask);
+
         Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
         navigate('/tasks');
     }

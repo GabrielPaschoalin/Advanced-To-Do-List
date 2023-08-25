@@ -18,7 +18,8 @@ Meteor.methods({
       userId: this.userId,
       needEdit: false,
       isChecked: false,
-      description: 'Type a description here', 
+      description: 'Type a description here',
+      situacao: 10
     })
   },
 
@@ -54,8 +55,6 @@ Meteor.methods({
     if (!this.userId) {
       throw new Meteor.Error('Not authorized.');
     }
-
-    console.log("Task edit: ", needEdit, "\nTask ID: ", taskId);
 
     TasksCollection.update(taskId, {
       $set: {
