@@ -5,6 +5,8 @@ import { useTracker } from 'meteor/react-meteor-data';
 import { Meteor } from 'meteor/meteor';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
 import DrawerComponent from './Components/Drawer';
+import { Button } from '@mui/base';
+import DehazeIcon from '@mui/icons-material/Dehaze';
 
 const App = () => {
 
@@ -27,8 +29,18 @@ const App = () => {
       {user && ( //Renderiza se a condição for verdadeira
         <>
           <div className='Header'>
-            <DrawerComponent user={user}/>
-            <button className="logout" onClick={submit}>Logout</button>
+            <div className='DrawerPosition'>
+              <DrawerComponent user={user} />
+            </div>
+            <div className='logoutPosition'>
+              <Button
+                onClick={submit}
+                color="secondary"
+                variant="contained"
+              >
+                LOGOUT
+              </Button>
+            </div>
           </div>
           <Outlet />
         </>

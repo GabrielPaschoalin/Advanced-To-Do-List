@@ -25,10 +25,8 @@ export const TaskForm = () => {
       />
       <Button
         size="large"
-        //variant={isEdited ? "outlined" : "contained"}
         color="primary"
         onClick={handleSubmit}
-        //disabled={text ? false : true}
       >
         Enviar 
       </Button>

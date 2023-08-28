@@ -5,7 +5,7 @@ import { Button, Checkbox } from "@material-ui/core";
 import { useTracker } from 'meteor/react-meteor-data';
 import MenuItem from '@mui/material/MenuItem';
 import InputLabel from '@mui/material/InputLabel';
-
+import { Meteor } from 'meteor/meteor';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 
@@ -56,8 +56,6 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
             console.log("SEM PERMISSÃO");
         }
     };
-
-    console.log('Taskpage')
 
     return (
         <div>

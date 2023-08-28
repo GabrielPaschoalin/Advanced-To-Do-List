@@ -13,8 +13,14 @@ import {
 import { useState } from "react";
 import { generatePath, useNavigate } from 'react-router';
 import { ListItemButton } from '@mui/material';
+import DehazeIcon from '@mui/icons-material/Dehaze';
 
 const data = [
+    {
+        name: "Home",
+        icon: <HomeOutlined />,
+        link: '/welcome'
+    },
     {
         name: "Tarefas",
         icon: <HomeOutlined />,
@@ -27,6 +33,7 @@ const data = [
 
     },
 
+
 ];
 
 function DrawerComponent({ user }) {
@@ -37,21 +44,27 @@ function DrawerComponent({ user }) {
     const getList = () => (
         <div style={{ width: 250 }} onClick={() => setOpen(false)}>
 
-            <ListItemButton key={0} onClick={() => navigate('/tasks')}>
+            <ListItemButton key={0} onClick={() => navigate('/welcome')}>
+                <ListItemIcon><HomeOutlined /></ListItemIcon>
+                <ListItemText primary="Home" />
+            </ListItemButton>
+
+            <ListItemButton key={1} onClick={() => navigate('/tasks')}>
                 <ListItemIcon><HomeOutlined /></ListItemIcon>
                 <ListItemText primary="Tarefas" />
             </ListItemButton>
 
-            <ListItemButton key={1} onClick={() => navigate(generatePath("/userProfile/:id", { id: user._id }))}>
+            <ListItemButton key={2} onClick={() => navigate(generatePath("/userProfile/:id", { id: user._id }))}>
                 <ListItemIcon><InboxOutlined /></ListItemIcon>
                 <ListItemText primary="Perfil" />
             </ListItemButton>
-            
+
+
         </div>
     );
     return (
         <div>
-            <Button onClick={() => setOpen(true)}>Click me</Button>
+            <ListItemIcon onClick={() => setOpen(true)}><DehazeIcon /></ListItemIcon>
             <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
                 {getList()}
             </Drawer>

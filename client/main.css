@@ -1,7 +1,6 @@
 body {
   padding: 0;
   font-family: sans-serif;
-  color: white;
   position: absolute;
   height: 100%;
   top: 0;
@@ -10,7 +9,7 @@ body {
   right: 0;
 
   /* background-color: #0E0E18; */
-  background-color: #414141;
+  background-color: white;
 
 }
 
@@ -18,18 +17,35 @@ body {
   height: 100%;
 }
 
-.login-form {
-
+.login{
   display: flex;
   flex-direction: column;
   align-items: center;
-  vertical-align: middle;
+  justify-content: center;
+  height: 100%;
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
 
+
+.submit{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.submit button {
+  padding: 5px 10px; /* Adjust padding as needed */
+}
+
+.link-Login{
+  margin-top: 5px;
 }
 
 .listButtons {
@@ -75,16 +91,10 @@ form {
 
 }
 
-/* .textField > label{
-  color:white !important;
-} */
-.textField > label{
-  color:white !important;
+.login-form .MuiTextField-root {
+  margin-bottom: 10px; 
 }
-.textField{
-  color:white !important;
- 
-}
+
 
 .task-left{
   width: 30%;
@@ -92,10 +102,17 @@ form {
 }
 
 .Header{
-  
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
-  
+  display: flex;
+  justify-content: space-between;
+}
+
+.DrawerPosition{
+  align-self: flex-start;
+}
+.logoutPosition{
+  align-self: flex-start;
 }
 
 .userProfile-fields{
