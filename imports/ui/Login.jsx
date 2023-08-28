@@ -27,10 +27,10 @@ const Login = () => {
     <div className='login'>
       <h1>Bem vindo ao To Do List!</h1>
       <div className='login-form'>
-        <TextField  variant="outlined" onChange={e => setUsername(e.target.value)} label="Username" value={username} name="loginUsername" />
+        <TextField  variant="outlined" onChange={e => setUsername(e.target.value)} label="Email" value={username} name="loginUsername" />
         <TextField  variant="outlined" onChange={e => setPassword(e.target.value)} label="Password" value={password} name="loginPassword" />
         <div className='submit'>
-          <Button size="large" color="primary" onClick={submit}>Login</Button>
+          <Button size="large" variant="contained" color="primary" onClick={submit}>Login</Button>
         </div>
         <div className='link-Login'>
           <Link to="/cadastro">CADASTRE-SE</Link>

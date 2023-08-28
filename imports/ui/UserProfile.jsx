@@ -43,20 +43,22 @@ const UserProfile = () => {
     return (
         <div className='userProfile'>
 
-            {/* USER PROFILE: {user._id} */}
-            <div className='userProfile-fields'>
-                <TextField className='userField' variant="outlined" onChange={(e) => setNome(e.target.value)} label="Nome" value={nome} />
-                <TextField className='userField' variant="outlined" onChange={(e) => setEmail(e.target.value)} label="Email" value={username} />
-                <TextField className='userField' variant="outlined" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} />
-                <TextField className='userField' variant="outlined" onChange={(e) => setEmpresa(e.target.value)} label="Empresa" value={empresa} />
-
+            <h2>USER PROFILE</h2>
+            <div className='login-form'>
+                <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setNome(e.target.value)} label="Nome" value={nome} />
+                <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setEmail(e.target.value)} label="Email" value={username} />
+                <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} />
+                <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setEmpresa(e.target.value)} label="Empresa" value={empresa} />
             </div>
-            <Button size="large" color="primary" onClick={updateUserProfile}>
-                ATUALIZAR PERFIL
-            </Button>
-            <Button size="large" color="primary" onClick={cancelUpdate}>
-                CANCELAR
-            </Button>
+
+            <div className="edit-button-container">
+                <Button variant="contained" onClick={updateUserProfile}>
+                    ATUALIZAR PERFIL
+                </Button>
+                <Button variant="contained" color="secondary" onClick={cancelUpdate}>
+                    CANCELAR
+                </Button>
+            </div>
 
         </div>
     );

@@ -56,7 +56,7 @@ const Cadastro = () => {
       <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} label="Email" value={email}/>
       <TextField variant="outlined" onChange={(e) => setPassword(e.target.value)} label="Password" value={password}/>
 
-      <Button size="large" color="primary" onClick={submit}> CADASTRAR </Button>
+      <Button size="large" color="primary" variant="contained" onClick={submit}> CADASTRAR </Button>
 
     </div>
   );

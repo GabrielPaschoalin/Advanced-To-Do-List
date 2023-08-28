@@ -26,7 +26,7 @@ const EditTask = () => {
         e.preventDefault();
 
         const updatedTask = { ...selectedTask, text, createdAt: data, description, needEdit: false };
-    
+
         Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
         navigate('/tasks');
     }
@@ -35,7 +35,7 @@ const EditTask = () => {
         e.preventDefault();
 
         const updatedTask = { ...selectedTask, needEdit: false };
-        
+
         console.log(updatedTask);
 
         Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
@@ -47,11 +47,11 @@ const EditTask = () => {
     return (
 
         <div >
-            EDITAR TAREFA: {selectedTask.text}
+
             <FormGroup className='Edit'>
+                <h2>EDITAR TAREFA</h2>
                 <TextField
                     className='textField'
-                    sx={{ input: { color: 'red' } }}
                     variant="filled"
                     color="secondary"
                     margin="dense"
@@ -62,7 +62,7 @@ const EditTask = () => {
 
                 <TextField
                     className='textField'
-                    variant="outlined"
+                    variant="filled"
                     color="secondary"
                     margin="dense"
                     onChange={(e) => setDescription(e.target.value)}
@@ -72,24 +72,17 @@ const EditTask = () => {
 
                 <TextField
                     className='textField'
-                    variant="outlined"
+                    variant="filled"
                     color="secondary"
                     margin="dense"
                     onChange={(e) => setData(e.target.value)}
                     label="Data"
                     value={data}
                 />
-
-                <Button
-                    onClick={returnToTaskList}
-                    variant="contained"
-                    className="editButton"
-                >CONFIRMAR</Button>
-                <Button
-                    onClick={handleCancel}
-                    variant="contained"
-                    className="editButton"
-                >CANCELAR</Button>
+                <div className="edit-button-container">
+                    <Button onClick={returnToTaskList} variant="contained" className='confirm-button'>CONFIRMAR</Button>
+                    <Button onClick={handleCancel} variant="contained" color="secondary">CANCELAR</Button>
+                </div>
             </FormGroup>
 
         </div>
