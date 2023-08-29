@@ -14,32 +14,21 @@ import { useState } from "react";
 import { generatePath, useNavigate } from 'react-router';
 import { ListItemButton } from '@mui/material';
 import DehazeIcon from '@mui/icons-material/Dehaze';
-
-const data = [
-    {
-        name: "Home",
-        icon: <HomeOutlined />,
-        link: '/welcome'
-    },
-    {
-        name: "Tarefas",
-        icon: <HomeOutlined />,
-        link: '/tasks'
-    },
-    {
-        name: "Perfil",
-        icon: <InboxOutlined />,
-        link: '/userProfile'
-
-    },
-
-
-];
-
+import TaskIcon from '@mui/icons-material/Task';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 function DrawerComponent({ user }) {
-    const [open, setOpen] = useState(false);
 
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
+
+    const toggleDrawer = (condition) => (event) => {
+        if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
+          return;
+        }
+    
+        setOpen(condition);
+      };
+        
 
     const getList = () => (
         <div style={{ width: 250 }} onClick={() => setOpen(false)}>
@@ -50,12 +39,12 @@ function DrawerComponent({ user }) {
             </ListItemButton>
 
             <ListItemButton key={1} onClick={() => navigate('/tasks')}>
-                <ListItemIcon><HomeOutlined /></ListItemIcon>
+                <ListItemIcon><TaskIcon /></ListItemIcon>
                 <ListItemText primary="Tarefas" />
             </ListItemButton>
 
             <ListItemButton key={2} onClick={() => navigate(generatePath("/userProfile/:id", { id: user._id }))}>
-                <ListItemIcon><InboxOutlined /></ListItemIcon>
+                <ListItemIcon><AccountCircleIcon /></ListItemIcon>
                 <ListItemText primary="Perfil" />
             </ListItemButton>
 
@@ -64,8 +53,8 @@ function DrawerComponent({ user }) {
     );
     return (
         <div>
-            <ListItemIcon onClick={() => setOpen(true)}><DehazeIcon /></ListItemIcon>
-            <Drawer open={open} anchor={"left"} onClose={() => setOpen(false)}>
+            <ListItemIcon onClick={toggleDrawer(true)}><DehazeIcon /></ListItemIcon>
+            <Drawer open={open} anchor={"left"} onClose={toggleDrawer(false)}>
                 {getList()}
             </Drawer>
         </div>

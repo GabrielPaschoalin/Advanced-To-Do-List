@@ -6,7 +6,6 @@ import { Meteor } from 'meteor/meteor';
 import { useNavigate, Outlet, Link } from 'react-router-dom';
 import DrawerComponent from './Components/Drawer';
 import { Button } from '@mui/base';
-import DehazeIcon from '@mui/icons-material/Dehaze';
 
 const App = () => {
 

@@ -15,10 +15,11 @@ const editClick = ({ _id, needEdit }) => {
 }
 
 const TaskPage = () => {
-    
-    const tasks = useTracker(() =>
-        TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
-    );
+
+    const tasks = useTracker(() => {
+        Meteor.subscribe('tasks');
+        return TasksCollection.find().fetch();
+    });
 
     return (
         <div className='taskMain'>

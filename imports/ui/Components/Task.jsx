@@ -52,7 +52,7 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
             const updatedTask = { ...task, situacao: newSituacao };
             Meteor.call('tasks.updateTask', task._id, updatedTask);
-        }else {
+        } else {
             console.log("SEM PERMISSÃO");
         }
     };
@@ -70,50 +70,55 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
                         {task.text}
 
                     </div>
-                    <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Situação</InputLabel>
-                        <Select
-                            labelId="demo-simple-select-label"
-                            id="demo-simple-select"
-                            value={situacao}
-                            label="Estado"
-                            onChange={onSituacaoChange}
-                        >
-                            {situacao === 10 && (
+                    <div className='task-right'>
+                        <FormControl fullWidth>
+                            <InputLabel id="demo-simple-select-label">Situação</InputLabel>
+                            <Select
+                                labelId="demo-simple-select-label"
+                                id="demo-simple-select"
+                                value={situacao}
+                                label="Estado"
+                                onChange={onSituacaoChange}
+                            >
+                                {situacao === 10 && (
 
-                                [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
-                                <MenuItem key={2} value={20}>Em Andamento</MenuItem>]
+                                    [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
+                                    <MenuItem key={2} value={20}>Em Andamento</MenuItem>]
 
-                            )}
-                            {situacao === 20 && (
-                                [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
-                                <MenuItem key={2} value={20}>Em Andamento</MenuItem>,
-                                <MenuItem key={3} value={30}>Concluída</MenuItem>]
+                                )}
+                                {situacao === 20 && (
+                                    [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
+                                    <MenuItem key={2} value={20}>Em Andamento</MenuItem>,
+                                    <MenuItem key={3} value={30}>Concluída</MenuItem>]
 
-                            )}
-                            {situacao === 30 && (
+                                )}
+                                {situacao === 30 && (
 
-                                [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
-                                <MenuItem key={2} value={20}>Em Andamento</MenuItem>,
-                                <MenuItem key={3} value={30}>Concluída</MenuItem>]
+                                    [<MenuItem key={1} value={10}>Cadastrada</MenuItem>,
+                                    <MenuItem key={2} value={20}>Em Andamento</MenuItem>,
+                                    <MenuItem key={3} value={30}>Concluída</MenuItem>]
 
 
-                            )}
-                        </Select>
-                    </FormControl>
-                    <Button
-                        onClick={() => clickOnEdit()}
-                        variant="contained"
-                        className="listButtons"
-                    >EDIT</Button>
-                    <Button
-                        onClick={() => clickOnDelete()}
-                        color="secondary"
-                        variant="contained"
-                        className="listButtons"
-                    >
-                        DELETE
-                    </Button>
+                                )}
+                            </Select>
+                        </FormControl>
+
+                        <div className='edit-button-container'>
+                            <Button
+                                onClick={() => clickOnEdit()}
+                                variant="contained"
+                                className='edit-button'
+                            >EDIT</Button>
+                            <Button
+                                onClick={() => clickOnDelete()}
+                                color="secondary"
+                                variant="contained"
+                            >
+                                DELETE
+                            </Button>
+                        </div>
+                    </div>
+
                 </FormGroup>
             )}
 

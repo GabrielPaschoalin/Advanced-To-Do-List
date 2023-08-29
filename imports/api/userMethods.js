@@ -9,10 +9,10 @@ Meteor.methods({
       username: userData.username,
       password: userData.password,
       profile: {
-        nome: userData.nome,
-        dataNascimento: userData.dataNascimento,
-        sexo: userData.sexo,
-        empresa: userData.empresa,
+        nome: '',
+        dataNascimento: '',
+        sexo: 'M',
+        empresa: '',
       },
     });
     return userId;

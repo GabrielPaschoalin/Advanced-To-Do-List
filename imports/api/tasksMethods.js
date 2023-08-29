@@ -5,7 +5,7 @@ import { TasksCollection } from './TasksCollection';
 
 Meteor.methods({
 
-  'tasks.insert'(text) {
+  'tasks.insert'(text, publico) {
     check(text, String);
 
     if (!this.userId) {
@@ -19,7 +19,8 @@ Meteor.methods({
       needEdit: false,
       isChecked: false,
       description: 'Type a description here',
-      situacao: 10
+      situacao: 10,
+      publico
     })
   },
 

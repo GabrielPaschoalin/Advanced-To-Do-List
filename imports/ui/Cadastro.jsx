@@ -8,10 +8,7 @@ const Cadastro = () => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [nome, setNome] = useState('');
-  const [dataNascimento, setDataNascimento] = useState('');
-  const [sexo, setSexo] = useState('');
-  const [empresa , setEmpresa] = useState('');
+
   
   const navigate = useNavigate();
 
