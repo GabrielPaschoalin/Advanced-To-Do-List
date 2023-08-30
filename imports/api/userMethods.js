@@ -13,6 +13,7 @@ Meteor.methods({
         dataNascimento: '',
         sexo: 'M',
         empresa: '',
+        photo: "default_avatar_url"
       },
     });
     return userId;

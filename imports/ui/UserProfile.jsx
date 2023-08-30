@@ -6,6 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem'; // Corrected import
+import ProfilePhoto from './Components/ProfilePhoto';
 
 const UserProfile = () => {
 
@@ -16,7 +17,7 @@ const UserProfile = () => {
     const [dataNascimento, setDataNascimento] = useState(user.profile.dataNascimento);
     const [sexo, setSexo] = useState(user.profile.sexo);
     const [empresa, setEmpresa] = useState(user.profile.empresa);
-
+    const [photo, setPhoto] = useState(user.profile.photo);
     const navigate = useNavigate();
 
     const updateUserProfile = () => {
@@ -27,7 +28,8 @@ const UserProfile = () => {
                 nome,
                 dataNascimento,
                 sexo,
-                empresa
+                empresa,
+                photo
             }
         }, (error) => {
             if (!error) {
@@ -56,8 +58,9 @@ const UserProfile = () => {
                 </div>
 
                 <div className='profile-right'>
+                    <ProfilePhoto photo={photo} setPhoto={setPhoto}/>
                     <FormControl fullWidth>
-                        <InputLabel id="demo-simple-select-label">Privado/Público</InputLabel>
+                        <InputLabel id="demo-simple-select-label">Sexo</InputLabel>
                         <Select
                             labelId="demo-simple-select-label"
                             id="demo-simple-select"

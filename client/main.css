@@ -108,7 +108,7 @@ body {
 .Header {
   width: 100%;
   display: flex;
-  display: flex;
+  margin-bottom: 50px;
   justify-content: space-between;
 }
 
@@ -187,4 +187,25 @@ body {
   margin-top: 20px;
   display: flex;
   justify-content: center;
+}
+
+.task-form{
+  width: 50%;
+  display: flex;
+}
+
+.task-form-main{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ProfilePhotoContainer{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+}
+
+.ProfilePhotoItem{
+  margin-bottom: 10px;
 }
