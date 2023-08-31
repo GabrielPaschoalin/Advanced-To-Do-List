@@ -13,7 +13,7 @@ const UserProfile = () => {
     const user = useTracker(() => Meteor.user());
 
     const [username, setUsername] = useState(user.username);
-    const [nome, setNome] = useState(user.profile.nome);
+    const [email, setEmail] = useState(user.profile.email);
     const [dataNascimento, setDataNascimento] = useState(user.profile.dataNascimento);
     const [sexo, setSexo] = useState(user.profile.sexo);
     const [empresa, setEmpresa] = useState(user.profile.empresa);
@@ -25,7 +25,7 @@ const UserProfile = () => {
         Meteor.call('updateUserProfile', user._id, {
             username,
             profile: {
-                nome,
+                email,
                 dataNascimento,
                 sexo,
                 empresa,
@@ -51,9 +51,9 @@ const UserProfile = () => {
             <h2>USER PROFILE</h2>
             <div className='user-form-fields'>
                 <div className='login-form'>
-                    <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setNome(e.target.value)} label="Nome" value={nome} />
-                    <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setEmail(e.target.value)} label="Email" value={username} />
-                    <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} />
+                    <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setNome(e.target.value)} label="Nome" value={username} />
+                    <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setEmail(e.target.value)} label="Email" value={email} type="email"/>
+                    <TextField fullWidth variant="filled" color="secondary" margin="dense" onChange={(e) => setDataNascimento(e.target.value)} label="Data de Nascimento" value={dataNascimento} type="date"/>
                     <TextField variant="filled" color="secondary" margin="dense" onChange={(e) => setEmpresa(e.target.value)} label="Empresa" value={empresa} />
                 </div>
 

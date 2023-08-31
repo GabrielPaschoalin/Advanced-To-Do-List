@@ -4,17 +4,20 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem'; // Corrected import
+import { useTracker } from 'meteor/react-meteor-data';
 
 export const TaskForm = () => {
   const [text, setText] = useState("");
   const [publico, setPublico] = useState(true);
+
+  const user = useTracker(() => Meteor.user());
 
   const handleSubmit = e => {
     e.preventDefault();
 
     if (!text) return;
 
-    Meteor.call('tasks.insert', text, publico);
+    Meteor.call('tasks.insert', text, publico, user.username);
 
     setText("");
   };
@@ -22,13 +25,16 @@ export const TaskForm = () => {
   return (
     <div className='task-form-main'>
       <div className='task-form'>
-        <TextField
-          variant="outlined"
-          onChange={(e) => setText(e.target.value)}
-          label="type your task"
-          value={text}
-          style={{ width: '50%'}}
-        />
+        <div className='type-task-form'>
+          <TextField
+            variant="outlined"
+            onChange={(e) => setText(e.target.value)}
+            label="type your task"
+            fullWidth
+            value={text}
+          />
+        </div>
+
 
         <FormControl >
           <InputLabel id="demo-simple-select-label">Restrição</InputLabel>

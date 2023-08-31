@@ -8,7 +8,7 @@ import InputLabel from '@mui/material/InputLabel';
 import { Meteor } from 'meteor/meteor';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-
+import TaskIcon from '@mui/icons-material/Task';
 
 const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
@@ -28,13 +28,14 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
         }
     }, [task.needEdit]);
 
+
     const clickOnEdit = () => {
         if (user._id === task.userId) {
             onEditClick(task);
         } else {
             console.log("SEM PERMISSÃO");
-        }
-    };
+        };
+    }
     const clickOnDelete = () => {
         if (user._id === task.userId) {
             onDeleteClick(task);
@@ -58,18 +59,18 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
     };
 
     return (
-        <div>
+        <>
             {!task.needEdit && (
-                <FormGroup className='task'>
+                <div className='task'>
                     <div className='task-left'>
+                        <TaskIcon fontSize="large" />
                         <Checkbox
                             checked={!!task.isChecked}
                             onClick={() => onCheckboxClick(task)}
-
                         />
-                        {task.text}
-
+                        {task.text} ({task.username})
                     </div>
+
                     <div className='task-right'>
                         <FormControl fullWidth>
                             <InputLabel id="demo-simple-select-label">Situação</InputLabel>
@@ -104,25 +105,17 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
                         </FormControl>
 
                         <div className='edit-button-container'>
-                            <Button
-                                onClick={() => clickOnEdit()}
-                                variant="contained"
-                                className='edit-button'
-                            >EDIT</Button>
-                            <Button
-                                onClick={() => clickOnDelete()}
-                                color="secondary"
-                                variant="contained"
-                            >
-                                DELETE
-                            </Button>
+                            <div className='edit-button'>
+                                <Button onClick={() => clickOnEdit()} variant="contained">EDIT</Button>
+                            </div>
+                            <Button onClick={() => clickOnDelete()} color="secondary" variant="contained">DELETE</Button>
                         </div>
                     </div>
 
-                </FormGroup>
+                </div>
             )}
 
-        </div>
+        </>
     );
 };
 

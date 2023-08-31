@@ -10,7 +10,7 @@ Meteor.methods({
       password: userData.password,
       profile: {
         nome: '',
-        dataNascimento: '',
+        dataNascimento: '2023-08-31',
         sexo: 'M',
         empresa: '',
         photo: "default_avatar_url"

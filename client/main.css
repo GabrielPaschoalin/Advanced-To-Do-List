@@ -100,8 +100,9 @@ body {
 
 
 .task-left {
-  width: 30%;
-  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 
@@ -146,7 +147,6 @@ body {
 }
 
 .edit-button-container {
-  width: 30%;
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
@@ -160,20 +160,22 @@ body {
   margin-right: 5px;
 }
 
-.user-form-fields{
+.user-form-fields {
   display: flex;
   flex-direction: row;
-  margin-top: 20px; 
+  margin-top: 20px;
 }
 
-.profile-right{
+.profile-right {
   margin-left: 50px;
 }
 
 .home-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Creates 2 columns */
-  grid-gap: 10px; /* Gap between grid items */
+  grid-template-columns: repeat(2, 1fr);
+  /* Creates 2 columns */
+  grid-gap: 10px;
+  /* Gap between grid items */
   margin-top: 50px;
   margin-top: 30px;
 }
@@ -183,29 +185,76 @@ body {
   padding: 10px;
 }
 
-.home-button{
+.home-button {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
 
-.task-form{
+.task-form {
   width: 50%;
   display: flex;
 }
 
-.task-form-main{
+.task-form-main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.ProfilePhotoContainer{
+.ProfilePhotoContainer {
   display: flex;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
 }
 
-.ProfilePhotoItem{
+.ProfilePhotoItem {
   margin-bottom: 10px;
 }
+
+.type-task-form {
+  width: 50%;
+}
+
+@media (max-width:500px) {
+
+  .home-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .type-task-form {
+    width: 100%;
+  }
+
+  .user-form-fields {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+
+  .profile-right {
+    margin-bottom: 10px;
+    margin-left: 0px;
+  }
+
+  .edit-button-container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .task{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .task-right{
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+

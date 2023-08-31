@@ -5,11 +5,11 @@ import { FormGroup, TextField, Button, MuiThemeProvider } from "@material-ui/cor
 import { useParams, useNavigate } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 
+
 const EditTask = () => {
 
     const navigate = useNavigate();
     const { id } = useParams();
-
 
     const task = useTracker(() =>
         TasksCollection.find({ _id: id }).fetch()
@@ -26,8 +26,8 @@ const EditTask = () => {
         e.preventDefault();
 
         const updatedTask = { ...selectedTask, text, createdAt: data, description, needEdit: false };
-
-        Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
+        
+        Meteor.call('tasks.updateTask', id, updatedTask);
         navigate('/tasks');
     }
 
@@ -35,14 +35,10 @@ const EditTask = () => {
         e.preventDefault();
 
         const updatedTask = { ...selectedTask, needEdit: false };
-
-        console.log(updatedTask);
-
-        Meteor.call('tasks.updateTask', selectedTask._id, updatedTask);
+        
+        Meteor.call('tasks.updateTask', id, updatedTask);
         navigate('/tasks');
     }
-
-
 
     return (
 
@@ -76,7 +72,8 @@ const EditTask = () => {
                     color="secondary"
                     margin="dense"
                     onChange={(e) => setData(e.target.value)}
-                    label="Data"
+                    label="Data de Criação"
+                    type="date"
                     value={data}
                 />
                 <div className="edit-button-container">

@@ -25,7 +25,6 @@ const TaskPage = () => {
         <div className='taskMain'>
             <TaskForm />
             <ul>
-
                 {tasks.map(task => (
                     <Task
                         key={task._id}

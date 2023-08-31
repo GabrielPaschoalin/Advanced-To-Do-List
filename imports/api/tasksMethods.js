@@ -2,20 +2,26 @@ import { Meteor } from 'meteor/meteor';
 import { check } from 'meteor/check';
 import { TasksCollection } from './TasksCollection';
 
+const date = new Date();
+
+let currentDate = `${date.getFullYear()}-0${date.getMonth()}-${date.getDate()}`;
+
 
 Meteor.methods({
 
-  'tasks.insert'(text, publico) {
+  'tasks.insert'(text, publico, username) {
     check(text, String);
 
     if (!this.userId) {
       throw new Meteor.Error('Not authorized.');
     }
 
+
     TasksCollection.insert({
       text,
-      createdAt: new Date,
+      createdAt: currentDate,
       userId: this.userId,
+      username,
       needEdit: false,
       isChecked: false,
       description: 'Type a description here',
@@ -74,6 +80,5 @@ Meteor.methods({
     TasksCollection.update(taskId, {
       $set: updatedTask
   });
-
   }
 });

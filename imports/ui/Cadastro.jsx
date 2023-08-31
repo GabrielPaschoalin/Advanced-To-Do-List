@@ -6,7 +6,7 @@ import '/imports/api/userMethods';
 
 const Cadastro = () => {
   
-  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   
@@ -16,7 +16,7 @@ const Cadastro = () => {
     e.preventDefault();
 
     const registerData = {
-      username: email,
+      username: name,
       password: password,
       nome: '',
       dataNascimento: '', 
@@ -33,25 +33,16 @@ const Cadastro = () => {
   
     });
 
-    // Accounts.createUser(registerData, function(error){
-    //   if (Meteor.user()){
-    //     navigate("/login");
-    //     console.log(Meteor.userId());
-        
-    //   }else{
-    //     console.log("ERROR: " + error.reason);
-    //   }
-    // })
-
   }
+
 
   return (
     <div className='login-form'>
 
       <h1>Bem vindo ao To Do List! Realize seu cadastro</h1>
 
-      <TextField variant="outlined" onChange={(e) => setEmail(e.target.value)} label="Email" value={email}/>
-      <TextField variant="outlined" onChange={(e) => setPassword(e.target.value)} label="Password" value={password}/>
+      <TextField variant="outlined" onChange={(e) => setName(e.target.value)} label="Nome" value={name}/>
+      <TextField variant="outlined" onChange={(e) => setPassword(e.target.value)} label="Password" value={password}  type="password"/>
 
       <Button size="large" color="primary" variant="contained" onClick={submit}> CADASTRAR </Button>
 

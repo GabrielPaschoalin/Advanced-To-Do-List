@@ -8,7 +8,6 @@ import {
 } from "@material-ui/core";
 import {
     HomeOutlined,
-    InboxOutlined,
 } from "@material-ui/icons";
 import { useState } from "react";
 import { generatePath, useNavigate } from 'react-router';
