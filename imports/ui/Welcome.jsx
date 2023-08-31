@@ -9,11 +9,14 @@ import { useNavigate } from 'react-router';
 
 export default function Welcome() {
 
+  const user = useTracker(() => Meteor.user());
+  
   const navigate = useNavigate('');
 
-  const tasks = useTracker(() =>
-    TasksCollection.find({}, { sort: { createdAt: -1 } }).fetch()
-  );
+  const tasks = useTracker(() => {
+    Meteor.subscribe('tasks');
+    return TasksCollection.find({userId:user._id}).fetch();
+  });
 
   let cadastro = 0;
   let andamento = 0;

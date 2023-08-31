@@ -32,13 +32,19 @@ const App = () => {
               <DrawerComponent user={user} />
             </div>
             <div className='logoutPosition'>
-              <Button
-                onClick={submit}
-                color="secondary"
-                variant="contained"
-              >
-                LOGOUT
-              </Button>
+              <div className='logoutContainer'>
+                <div className='ola'>
+                  Olá, {user.username}
+                </div>
+
+                <Button
+                  onClick={submit}
+                  color="secondary"
+                  variant="contained"
+                >
+                  LOGOUT
+                </Button>
+              </div>
             </div>
           </div>
           <Outlet />

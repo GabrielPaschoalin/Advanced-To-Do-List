@@ -118,7 +118,14 @@ body {
 }
 
 .logoutPosition {
-  align-self: flex-start;
+  display: flex;
+  justify-content: center; /* Horizontally center */
+  align-items: center; /* Vertically center */
+}
+
+.logoutContainer {
+  display: flex;
+  align-items: center; /* Vertically center children */
 }
 
 .userProfile-fields {
@@ -204,7 +211,6 @@ body {
 
 .ProfilePhotoContainer {
   display: flex;
-  flex-direction: column;
   align-items: center;
 }
 
@@ -247,14 +253,13 @@ body {
     flex-direction: column;
   }
 
-  .task{
-    display: flex;
-    flex-wrap: wrap;
-  }
-  .task-right{
-    display: flex;
+  .task {
     flex-direction: column;
+    align-items: flex-start;
   }
 
 }
 
+.ola {
+  margin-right: 10px; /* Spacing between text and button */
+}

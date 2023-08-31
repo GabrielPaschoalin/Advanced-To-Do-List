@@ -106,7 +106,7 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
                         <div className='edit-button-container'>
                             <div className='edit-button'>
-                                <Button onClick={() => clickOnEdit()} variant="contained">EDIT</Button>
+                                <Button fullWidth onClick={() => clickOnEdit()} variant="contained">EDIT</Button>
                             </div>
                             <Button onClick={() => clickOnDelete()} color="secondary" variant="contained">DELETE</Button>
                         </div>
