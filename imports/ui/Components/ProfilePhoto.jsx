@@ -3,6 +3,8 @@ import { Avatar } from '@material-ui/core'; // Import Avatar, not SizedAvatar
 import { useTracker } from 'meteor/react-meteor-data';
 import { Button } from "@material-ui/core";
 
+
+
 const ProfilePhoto = ({ photo, setPhoto }) => {
 
     const handleFileChange = (event) => {

@@ -9,6 +9,7 @@ import { Meteor } from 'meteor/meteor';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import TaskIcon from '@mui/icons-material/Task';
+import Swal from 'sweetalert2'
 
 const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
 
@@ -33,14 +34,22 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
         if (user._id === task.userId) {
             onEditClick(task);
         } else {
-            console.log("SEM PERMISSÃO");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Você não tem permissão para isso!',
+            })
         };
     }
     const clickOnDelete = () => {
         if (user._id === task.userId) {
             onDeleteClick(task);
         } else {
-            console.log("SEM PERMISSÃO");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Você não tem permissão para isso!',
+            })
         }
     };
 
@@ -54,7 +63,11 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
             const updatedTask = { ...task, situacao: newSituacao };
             Meteor.call('tasks.updateTask', task._id, updatedTask);
         } else {
-            console.log("SEM PERMISSÃO");
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: 'Você não tem permissão para isso!',
+            })
         }
     };
 

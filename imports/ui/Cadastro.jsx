@@ -1,15 +1,16 @@
 import React, { useState } from 'react';
-import {Meteor} from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor';
 import { useNavigate } from 'react-router-dom';
 import { TextField, Button } from "@material-ui/core";
 import '/imports/api/userMethods';
+import Swal from 'sweetalert2'
 
 const Cadastro = () => {
-  
+
   const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
-  
+
   const navigate = useNavigate();
 
   const submit = e => {
@@ -19,18 +20,22 @@ const Cadastro = () => {
       username: name,
       password: password,
       nome: '',
-      dataNascimento: '', 
+      dataNascimento: '',
       sexo: '',
       empresa: '',
-    
+
     }
     Meteor.call('user.register', registerData, (error) => {
       if (!error) {
         navigate("/login");
       } else {
-        console.log("Error registering user:", error.reason);
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: `Erro ao registrar usuário: ${error.reason}`
+        })
       }
-  
+
     });
 
   }
@@ -41,8 +46,8 @@ const Cadastro = () => {
 
       <h1>Bem vindo ao To Do List! Realize seu cadastro</h1>
 
-      <TextField variant="outlined" onChange={(e) => setName(e.target.value)} label="Nome" value={name}/>
-      <TextField variant="outlined" onChange={(e) => setPassword(e.target.value)} label="Password" value={password}  type="password"/>
+      <TextField variant="outlined" onChange={(e) => setName(e.target.value)} label="Nome" value={name} />
+      <TextField variant="outlined" onChange={(e) => setPassword(e.target.value)} label="Password" value={password} type="password" />
 
       <Button size="large" color="primary" variant="contained" onClick={submit}> CADASTRAR </Button>
 
