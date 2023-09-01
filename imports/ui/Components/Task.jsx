@@ -77,10 +77,6 @@ const Task = ({ task, onCheckboxClick, onDeleteClick, onEditClick }) => {
                 <div className='task'>
                     <div className='task-left'>
                         <TaskIcon fontSize="large" />
-                        <Checkbox
-                            checked={!!task.isChecked}
-                            onClick={() => onCheckboxClick(task)}
-                        />
                         {task.text} ({task.username})
                     </div>
 
