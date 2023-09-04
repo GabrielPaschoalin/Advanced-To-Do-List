@@ -24,7 +24,7 @@ const router = createBrowserRouter([
         element: <TaskPage />
       },
       {
-        path: "/welcome",
+        path: "/home",
         element: <Welcome />
       },
       {

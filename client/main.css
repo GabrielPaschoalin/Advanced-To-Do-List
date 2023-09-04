@@ -270,11 +270,16 @@ body {
 
 .filter {
   display: flex;
-  justify-content: flex-end;
   margin-top:30px;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .filter > button {
   background-color: #62807e;
+  width: 30%;
+  margin-bottom: 5px;
+  margin-right: 5px;
 }
 

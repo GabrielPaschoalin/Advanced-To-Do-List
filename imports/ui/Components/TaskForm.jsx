@@ -35,7 +35,6 @@ export const TaskForm = () => {
           />
         </div>
 
-
         <FormControl >
           <InputLabel id="demo-simple-select-label">Restrição</InputLabel>
           <Select
